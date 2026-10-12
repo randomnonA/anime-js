@@ -2,26 +2,35 @@
 <script>
   /* global anime */
 
+  //changed the constant name from "el" to "word"
   function setup () {
-    const el = document.createElement('div')
-    el.textContent = 'Welcome!'
-    el.style.fontSize = '64px'
-    el.style.margin = '240px auto'
-    el.style.width = 'fit-content'
-    document.body.appendChild(el)
+    const word = document.createElement('div')
+    // Changed the words in this from "Welcome!" to "Im so tired."
+    word.textContent = 'Im so tired.'
+    // Changed fontsize to 90
+    word.style.fontSize = '90px'
+    //changed margin to 500px
+    word.style.margin = '500px auto'
+    word.style.width = 'fit-content'
+    // Added a style which changed the font color to purple
+    word.style.color = 'purple'
+    document.body.appendChild(word)
     
-    const { chars } = anime.splitText(el, { 
+    const { chars } = anime.splitText(word, { 
       words: false, 
       chars: true
     })
     
     anime.animate(chars, {
+      // Changed the eases to "inCirc" and "outSine"
+      //Link provided by netnet: https://easings.net/#
+      // Also made the delays longer to fit with the meaning of the text
       y: [
-        { to: '-2.75rem', ease: 'outExpo', duration: 600 },
-        { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+        { to: '-2.75rem', ease: 'inCirc', duration: 1000 },
+        { to: 0, ease: 'outSine', duration: 800, delay: 100 }
       ],
-      rotate: { from: '-360deg', delay: 100 },
-      delay: anime.stagger(50),
+      rotate: { from: '-360deg', delay: 200 },
+      delay: anime.stagger(100),
       loopDelay: 1000,
       loop: true
     })
